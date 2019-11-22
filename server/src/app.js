@@ -2,7 +2,7 @@ const express = require('express')
 const router = require('./routes.js')
 require('./db/db.js')
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3001
 const app = express()
 
 app.use(express.json())
