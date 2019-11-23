@@ -3,6 +3,16 @@ const mongoose = require('mongoose')
 const bcryptjs = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
+const noteSchema = mongoose.Schema({
+  note_name: {
+    type: String,
+    maxlength: 80
+  },
+  note_body: {
+    type: String
+  }
+})
+
 const userSchema = mongoose.Schema({
   name: {
     type: String,
@@ -30,16 +40,7 @@ const userSchema = mongoose.Schema({
       required: true
     }
   }],
-  notes: [{
-    note: {
-      name: {
-        type: String
-      },
-      body: {
-        type: String
-      }
-    }
-  }]
+  notes: [noteSchema]
 })
 
 userSchema.methods.generateToken = function () {
