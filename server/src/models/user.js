@@ -29,17 +29,13 @@ const userSchema = mongoose.Schema({
       type: String,
       required: true
     }
-  }],
-  notes: [{
-    note: {
-      name: {
-        type: String
-      },
-      body: {
-        type: String
-      }
-    }
   }]
+})
+
+userSchema.virtual('notes', {
+  ref: 'Note',
+  localField: '_id',
+  foreignField: 'createdBy'
 })
 
 userSchema.methods.generateToken = function () {
@@ -96,7 +92,5 @@ userSchema.pre('save', function (next) {
 })
 
 const User = mongoose.model('User', userSchema)
-
-
 
 module.exports = User

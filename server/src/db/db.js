@@ -1,5 +1,11 @@
 const mongoose = require('mongoose')
-const connectionURL = 'mongodb+srv://admin:admin@cluster0-ntrap.mongodb.net/clase?retryWrites=true&w=majority'
+
+if (process.env.NODE_ENV == 'production') {
+  var connectionURL = process.env.MONGOOSE_CONNECTION_URL;
+} else {
+  const credentials = require('../credentials');
+  var connectionURL = credentials.MONGOOSE_CONNECTION_URL;
+}
 
 mongoose.connect(connectionURL, {
   useNewUrlParser: true,

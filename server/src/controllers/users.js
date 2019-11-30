@@ -63,12 +63,6 @@ const updateUser = function (req, res) {
   })
 }
 
-
-// const updateNote = function (req, res) {
-//   const
-// }
-
-
 const deleteUser = function (req, res) {
   const _id = req.params.id
   User.findByIdAndDelete(_id).then(function (user) {
@@ -81,12 +75,11 @@ const deleteUser = function (req, res) {
   })
 }
 
-
 module.exports = {
-  getUser,
   login,
   logout,
   createUser,
   updateUser,
-  deleteUser
+  deleteUser,
+  getUser
 }
