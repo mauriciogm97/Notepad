@@ -88,7 +88,11 @@ const createNote = function (req, res) {
 }
 
 const getNotes = function (req, res) {
-  return res.send(req.user.notes)
+  user = req.user
+  user.notes = user.notes.filter(function (note) {
+    return note.note_body !== null
+  })
+  return res.send(user.notes)
 }
 
 const updateNote = function (req, res) {
@@ -126,7 +130,7 @@ const updateNote = function (req, res) {
 const deleteNote = function (req, res) {
   user = req.user
 
-  user.notes.remove(req.params.note_id)
+  user.notes.pull(req.params.note_id)
   req.user.save().then(function (error) {
     return res.status(500).send({
       error
