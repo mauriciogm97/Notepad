@@ -1,5 +1,6 @@
 const express = require('express')
 const users = require('./controllers/users')
+const notes = require('./controllers/notes')
 const auth = require('./middleware/auth.js')
 
 const router = express.Router()
@@ -10,9 +11,9 @@ router.post('/users', users.createUser)
 router.patch('/users/:id', auth, users.updateUser)
 router.delete('/users/:id', users.deleteUser)
 router.get('/users/:id', users.getUser)
-router.post('/createNote', auth, users.createNote)
-router.get('/getNotes', auth, users.getNotes)
-router.patch('/updateNote/:note_id', auth, users.updateNote)
-router.patch('/deleteNote/:note_id', auth, users.updateNote)
+router.post('/createNote', auth, notes.createNote)
+router.get('/getNotes', auth, notes.getNotes)
+router.patch('/updateNote/:id', auth, notes.updateNote)
+router.patch('/deleteNote/:id', auth, notes.deleteNote)
 
 module.exports = router

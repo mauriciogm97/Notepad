@@ -3,16 +3,6 @@ const mongoose = require('mongoose')
 const bcryptjs = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
-const noteSchema = mongoose.Schema({
-  note_name: {
-    type: String,
-    maxlength: 80
-  },
-  note_body: {
-    type: String
-  }
-})
-
 const userSchema = mongoose.Schema({
   name: {
     type: String,
@@ -39,8 +29,13 @@ const userSchema = mongoose.Schema({
       type: String,
       required: true
     }
-  }],
-  notes: [noteSchema]
+  }]
+})
+
+userSchema.virtual('notes', {
+  ref: 'Note',
+  localField: '_id',
+  foreignField: 'createdBy'
 })
 
 userSchema.methods.generateToken = function () {
@@ -97,7 +92,5 @@ userSchema.pre('save', function (next) {
 })
 
 const User = mongoose.model('User', userSchema)
-
-
 
 module.exports = User
