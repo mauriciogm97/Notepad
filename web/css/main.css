@@ -416,5 +416,81 @@ input.input100 {
   }
 }
 
+#main {
+  display: flex;
+  height: 100%;
+}
 
+.notes {
+  padding: 0px;
+  height: 100%;
+  background-color: #f2f4f6;
+  border-right: 1px solid #c7d8df;
+  overflow: auto;
+}
 
+.body {
+  height: 100%;
+  /* background-color: #e9faff; */
+}
+
+.note-head {
+  width: 100%;
+  height: 100px;
+  padding: 15px 0px 0px 10px;
+  text-align: left;
+  /* background-color: #fdfdfd; */
+  background-color: #f2f4f6;
+  /* border-bottom: 1px solid gray; */
+  display: table;
+}
+
+.note-head:hover {
+  background-color: #aaaaaa;
+}
+
+.note-head:hover p {
+  color: white;
+}
+
+hr {
+  width: 90%;
+  padding-left: auto;
+  margin: 0;
+}
+/* .note-head:after {
+  border-bottom: 1px solid #666;
+  content: '';
+  display: block;
+  height: 100%;
+  width: 90%;
+  margin-left: auto;
+} */
+
+.icon {
+  font-size: 48px;
+}
+
+.note {
+  /* background-color: #BEBBBB; */
+  padding-top: 20px;
+  padding-bottom: 20px;
+}  
+
+.note-body {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  background-color: #fffddf;
+}
+
+.title {
+  color: black;
+  font-weight: 1000;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  /* width: 100%; */
+}
