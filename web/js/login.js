@@ -50,7 +50,7 @@ function hideValidate(input) {
 }
 /* ========================================================================*/
 
-$('#signup_link').on('click', function() {
+$('#signup_link').on('click', function () {
   window.location = './signup.html';
 })
 
@@ -61,20 +61,22 @@ $('#login_button').on('click', function (event) {
   let email = $('#email').val()
   let password = $('#password').val()
 
-  json_to_send = {
+  let json_to_send = {
     "email": email,
     "password": password
   };
 
+  json_to_send = JSON.stringify(json_to_send);
+
+  console.log(json_to_send)
+
   if (validateForm()) {
-    json_to_send = JSON.stringify(json_to_send)
-    console.log(json_to_send);
-    $.ajax({
+    req = $.ajax({
       url: 'https://notepad-finalweb.herokuapp.com/login',
       headers: {
         'Content-Type': 'application/json'
       },
-      method: 'GET',
+      method: 'POST',
       dataType: 'json',
       data: json_to_send,
       success: function (data) {
@@ -83,10 +85,11 @@ $('#login_button').on('click', function (event) {
         // TODO: Acciones de success
       },
       error: function (error_msg) {
-        console.log('Failure ', error_msg);
+        //console.log('Failure ', error_msg);
         // TODO: Acciones error
       }
     })
+
   } else {
     console.log('Invalid data.');
   }
