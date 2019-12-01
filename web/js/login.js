@@ -78,13 +78,15 @@ $('#login_button').on('click', function (event) {
       dataType: 'json',
       data: json_to_send,
       success: function (data) {
+        console.log(data);
         localStorage.setItem('token', data.token);
         console.log(data)
         window.location = './notes.html';
       },
       error: function (error_msg) {
-        //console.log('Failure ', error_msg);
+        console.log('Failure ', error_msg);
         // TODO: Acciones error
+        $('#error_msg').removeClass('hidden');
       }
     })
 

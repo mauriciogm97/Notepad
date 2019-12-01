@@ -521,3 +521,17 @@ hr {
   bottom: 0;
   /* width: 100%; */
 }
+
+#pswdLength {
+  color: gray;
+  font-size: small;
+}
+
+#error_msg {
+  color: red;
+  font-size: small;
+}
+
+.hidden {
+  display: none;
+}
