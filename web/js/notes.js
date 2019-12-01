@@ -10,10 +10,19 @@ if (token) {
 var notes = []
 
 function displayNoteEditable(index) {
-  note = notes[index];
+  let note = notes[index];
   $(document.getElementById('textbodymd')).addClass('hidden');
   let textbody = $(document.getElementById('textbody'));
-  textbody.val(note['name'] + '\n' + note['body']);
+  let name = note.name;
+  let body = note.body;
+  if (typeof name != 'undefined') {
+    textbody.val(name + '\n');
+    if (typeof body != 'undefined') {
+      textbody.val(textbody.val() + body);
+    }
+  } else {
+    textbody.val('');
+  }
   textbody.removeClass('hidden');
 }
 
@@ -29,11 +38,11 @@ function displayNoteMD(index) {
   }
 
   let note = notes[index];
-  let name = note['name'];
-  let body = note['body'];
+  let name = note.name;
+  let body = note.body;
 
   if (typeof name != 'undefined') {
-    const str = name + '<br>' + body;
+    const str = name + '\n' + body;
     $.ajax({
       url: 'https://api.github.com/markdown/raw',
       headers: {
