@@ -83,7 +83,6 @@
         data: json_to_send,
         success: function (data) {
           window.location = './index.html';
-          console.log('Success', data);
         },
         error: function (error_msg) {
           console.log('Failure', error_msg);

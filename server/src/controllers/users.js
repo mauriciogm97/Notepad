@@ -27,7 +27,7 @@ const logout = function (req, res) {
     return token.token !== req.token
   })
   req.user.save().then(function () {
-    return res.send()
+    return res.send({})
   }).catch(function (error) {
     return res.status(500).send({
       error: error
