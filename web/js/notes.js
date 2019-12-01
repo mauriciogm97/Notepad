@@ -12,40 +12,43 @@ var notes = []
 function displayNoteEditable(index) {
   note = notes[index];
   $(document.getElementById('textbodymd')).addClass('hidden');
-  textbody = $(document.getElementById('textbody'));
+  let textbody = $(document.getElementById('textbody'));
   textbody.val(note['name'] + '\n' + note['body']);
   textbody.removeClass('hidden');
 }
 
 function displayNoteMD(index) {
-  note = notes[index];
-  name = note['name'];
-  if (!name) {
-    name = '';
+  function display(text) {
+    $(document.getElementById('textbody')).addClass('hidden');
+    let textbodymd = $(document.getElementById('textbodymd'));
+    textbodymd.html(text);
+    textbodymd.removeClass('hidden');
+    textbodymd.on('click', () => {
+      displayNoteEditable(index);
+    })
   }
-  body = note['body'];
-  if (!body) {
-    body = '';
-  }
-  const str = name + '<br>' + body;
-  const req_url = 'https://helloacm.com/api/markdown/?cached&s=' + str;
 
-  $.ajax({
-    url: req_url,
-    method: 'GET',
-    success: function (data) {
-      $(document.getElementById('textbody')).addClass('hidden');
-      textbodymd = $(document.getElementById('textbodymd'));
-      textbodymd.html(data);
-      textbodymd.removeClass('hidden');
-      textbodymd.on('click', () => {
-        displayNoteEditable(index);
-      })
-    },
-    error: function (error_msg) {
-      console.log(error_msg);
-    }
-  })
+  let note = notes[index];
+  let name = note['name'];
+  let body = note['body'];
+
+  if (typeof name != 'undefined') {
+    const str = name + '<br>' + body;
+    const req_url = 'https://helloacm.com/api/markdown/?cached&s=' + str;
+    $.ajax({
+      url: req_url,
+      method: 'GET',
+      success: function (data) {
+        display(data)
+      },
+      error: function (error_msg) {
+        console.log(error_msg);
+      }
+    })
+  } else {
+    display('');
+  }
+
 }
 
 function placeNote(note) {
@@ -55,11 +58,11 @@ function placeNote(note) {
 
   let note_head_name = $(document.createElement('p'));
   note_head_name.addClass('title');
-  note_head_name.text(note.name);
+  note_head_name.text(note.name.replace(/[^\w\s!?]/g, ''));
 
   let note_head_body = $(document.createElement('p'));
   note_head_body.addClass('desc');
-  note_head_body.text(note.body);
+  note_head_body.text(note.body.replace(/[^\w\s!?]/g, ''));
 
   note_head.append(note_head_name);
   note_head.append(note_head_body);
