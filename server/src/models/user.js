@@ -3,6 +3,8 @@ const mongoose = require('mongoose')
 const bcryptjs = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
+var secret = process.env.TOKEN_SECRET || require('../credentials.js').TOKEN_SECRET
+
 const userSchema = mongoose.Schema({
   name: {
     type: String,
@@ -42,7 +44,7 @@ userSchema.methods.generateToken = function () {
   const user = this
   const token = jwt.sign({
     _id: user._id.toString()
-  }, "superSecret", {
+  }, secret, {
     expiresIn: '7 days'
   })
   user.tokens = user.tokens.concat({
