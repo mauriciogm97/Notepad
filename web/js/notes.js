@@ -9,8 +9,43 @@ if (token) {
 
 var notes = []
 
-function displayNote(index) {
-  console.log(index);
+function displayNoteEditable(index) {
+  note = notes[index];
+  $(document.getElementById('textbodymd')).addClass('hidden');
+  textbody = $(document.getElementById('textbody'));
+  textbody.val(note['name'] + '\n' + note['body']);
+  textbody.removeClass('hidden');
+}
+
+function displayNoteMD(index) {
+  note = notes[index];
+  name = note['name'];
+  if (!name) {
+    name = '';
+  }
+  body = note['body'];
+  if (!body) {
+    body = '';
+  }
+  const str = name + '<br>' + body;
+  const req_url = 'https://helloacm.com/api/markdown/?cached&s=' + str;
+
+  $.ajax({
+    url: req_url,
+    method: 'GET',
+    success: function (data) {
+      $(document.getElementById('textbody')).addClass('hidden');
+      textbodymd = $(document.getElementById('textbodymd'));
+      textbodymd.html(data);
+      textbodymd.removeClass('hidden');
+      textbodymd.on('click', () => {
+        displayNoteEditable(index);
+      })
+    },
+    error: function (error_msg) {
+      console.log(error_msg);
+    }
+  })
 }
 
 function placeNote(note) {
@@ -30,7 +65,7 @@ function placeNote(note) {
   note_head.append(note_head_body);
 
   note_head.on('click', () => {
-    displayNote(note_head.attr('index'))
+    displayNoteMD(note_head.attr('index'))
   });
 
   let hr = $(document.createElement('hr'));
@@ -155,19 +190,5 @@ $('#logout').on('click', function () {
 
 const getMarkdown = function () {
   // TODO: Assign string
-  const str = ''
-  const req_url = 'https: //helloacm.com/api/markdown/?cached&s=' + str
 
-  $.ajax({
-    url: req_url,
-    method: 'GET',
-    success: function (data) {
-      localStorage.remove('token')
-
-      // TODO: Acciones success
-    },
-    error: function (error_msg) {
-      // TODO: Acciones error
-    }
-  })
 }

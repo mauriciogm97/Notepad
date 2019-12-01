@@ -29,22 +29,16 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<!--===============================================================================================-->
 </head>
+
 <body>
 	<div id="main">
 		<div id="noteContainer" class="col-md-2 col-sm-4">
 			<div class="notes">
 				<div id="note-heads">
 					<!-- <div class="note-head">
-					<p class="title">Title</p>
-					<p class="desc">Description. Lorem ipsum dolor sit amet</p>
-				</div> -->
-					<div class="note-head">
 						<p class="title">Title</p>
 						<p class="desc">Description. Lorem ipsum dolor sit amet</p>
-					</div>
-					<hr>
-					<div class="note-head"></div>
-					<hr>
+					</div> -->
 				</div>
 			</div>
 			<div id="addNote">
@@ -54,7 +48,8 @@
 			</div>
 		</div>
 		<div class="body col-md-10 col-sm-8 note">
-			<textarea class="form-control note-body" onfocus="setbg('#fffddf');" rows="5" id="textbody"></textarea>
+			<div class="form-control note-body" onfocus="setbg('#fffddf');" rows="5" id="textbodymd"></div>
+			<textarea class="form-control note-body hidden" onfocus="setbg('#fffddf');" rows="5" id="textbody"></textarea>
 		</div>
 	</div>
 
