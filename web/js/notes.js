@@ -66,12 +66,16 @@ function placeNote(note) {
 
   note_head.on('click', () => {
     displayNoteMD(note_head.attr('index'))
+    $.each($('.note-head'), function() {
+        $(this).removeClass('clicked');
+    })
+    note_head.addClass('clicked');
   });
 
   let hr = $(document.createElement('hr'));
 
-  $('#note-heads').append(note_head);
-  $('#note-heads').append(hr);
+  $('#note-heads').prepend(hr);
+  $('#note-heads').prepend(note_head);
 
   notes.push(note);
 }
@@ -96,6 +100,13 @@ function loadNotes() {
   });
 }
 loadNotes()
+
+function clickHead() {
+    $.each($('.note-head'), function() {
+        $(this).removeClass('clicked');
+    })
+    $(this).addClass('clicked');
+}
 
 $('#addNote').on('click', function () {
   $.ajax({
