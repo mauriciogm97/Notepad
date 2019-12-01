@@ -10,6 +10,22 @@ if (token) {
 var notes = []
 var selected = notes.index - 1;
 
+function getRateLimit() {
+  $.ajax({
+    url: 'https://api.github.com/rate_limit',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'GET',
+    success: function (data) {
+      console.log(data)
+    },
+    error: function (error_msg) {
+      console.log(error_msg);
+    }
+  })
+}
+
 function displayNoteEditable(index) {
   selected = index;
   let note = notes[index];
@@ -18,7 +34,7 @@ function displayNoteEditable(index) {
   let name = note.name;
   let body = note.body;
   if (typeof name != 'undefined') {
-    textbody.val(name + '\n');
+    textbody.val(name);
     if (typeof body != 'undefined') {
       textbody.val(textbody.val() + body);
     }
@@ -26,6 +42,7 @@ function displayNoteEditable(index) {
     textbody.val('');
   }
   textbody.removeClass('hidden');
+  textbody.select();
 
   $('#save').removeClass('hidden');
   $('#info').removeClass('hidden');
@@ -49,7 +66,8 @@ function displayNoteMD(index) {
   let body = note.body;
 
   if (typeof name != 'undefined') {
-    const str = name + '\n' + body;
+    const str = name + body;
+
     $.ajax({
       url: 'https://api.github.com/markdown/raw',
       headers: {
