@@ -249,25 +249,33 @@ $('#save').on('click', function () {
   });
 })
 
+$('#discard').on('click', function () {
+  if (confirm("Are you sure you want to discard the changes?")) {
+    displayNoteMD(selected);
+  }
+})
+
 $('#delete').on('click', function () {
-  let note = notes[selected];
+  if (confirm("Are you sure you want to delete the note?")) {
+    let note = notes[selected];
 
-  req_url = 'https://notepad-finalweb.herokuapp.com/deleteNote/' + note._id;
+    req_url = 'https://notepad-finalweb.herokuapp.com/deleteNote/' + note._id;
 
-  $.ajax({
-    url: req_url,
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + token
-    },
-    method: 'PATCH',
-    success: function (data) {
-      removeNote(selected);
-    },
-    error: function (error_msg) {
-      console.log(error_msg);
-    }
-  });
+    $.ajax({
+      url: req_url,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },
+      method: 'PATCH',
+      success: function (data) {
+        removeNote(selected);
+      },
+      error: function (error_msg) {
+        console.log(error_msg);
+      }
+    });
+  }
 })
 
 $('#logout').on('click', function () {
@@ -280,7 +288,7 @@ $('#logout').on('click', function () {
     method: 'GET',
     dataType: 'json',
     success: function (data) {
-      localStorage.remove('token');
+      localStorage.removeItem('token');
       window.location = './index.html';
     },
     error: function (error_msg) {
