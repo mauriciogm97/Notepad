@@ -51,9 +51,9 @@
 
     $(thisAlert).removeClass('alert-validate');
   }
-/* ========================================================================*/
+  /* ========================================================================*/
 
-  $('#login').on('click', function() {
+  $('#login').on('click', function () {
     window.location = './login.html';
   })
 
@@ -64,15 +64,15 @@
     let email = $('input[name=email]').val();
     let name = $('input[name=name]').val();
 
-    if(validateForm()) {
+    if (validateForm()) {
       let json_to_send = {
         "password": password,
         "email": email,
         "name": name,
       };
-  
+
       json_to_send = JSON.stringify(json_to_send);
-  
+
       $.ajax({
         url: 'https://notepad-finalweb.herokuapp.com/users',
         headers: {
@@ -82,13 +82,11 @@
         dataType: 'json',
         data: json_to_send,
         success: function (data) {
-          // TODO: Cambiar a index
-          window.location = './login.html'
+          window.location = './index.html';
           console.log('Success', data);
         },
         error: function (error_msg) {
           console.log('Failure', error_msg);
-          // TODO: Acciones de error
         }
       });
     } else {

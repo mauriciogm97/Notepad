@@ -34,6 +34,8 @@
 	<div id="main">
 		<div id="noteContainer" class="col-md-2 col-sm-4">
 			<div class="notes">
+				<div style="padding: 0px 5px 0px 0px"><button id="logout" class="btn-footer btn btn-info">Logout</button>
+				</div>
 				<div id="note-heads">
 					<!-- <div class="note-head">
 						<p class="title">Title</p>
@@ -52,11 +54,14 @@
 			<textarea class="form-control note-body hidden" onfocus="setbg('#fffddf');" rows="5" id="textbody"></textarea>
 			<div class="footer-container" style="display: flex; width: 100%; height: 5%;">
 				<div style="padding: 0px 5px 0px 0px" class="col-md-2"><button id="delete"
-						class="btn-footer btn btn-danger">Delete note</button></div>
-				<div style="padding: 0px 5px;" class="col-md-2"><a id="info" class="btn-footer btn btn-secondary hidden"
-						target="_blank" href="https://scottboms.com/downloads/documentation/markdown_cheatsheet.pdf">Information</a>
+						class="btn-footer btn btn-danger hidden">Delete note</button></div>
+				<div style="padding: 0px 5px 0px 0px;" class="col-md-2"><a id="info" class="btn-footer btn btn-secondary hidden"
+						target="_blank" href="https://scottboms.com/downloads/documentation/markdown_cheatsheet.pdf">MarkDown
+						Syntax</a>
 				</div>
-				<div style="padding: 0px 0px 0px 5px" class="col-md-8"><button id="save"
+				<div style="padding: 0px 5px 0px 0px" class="col-md-3"><button id="discard"
+						class="btn-footer btn btn-warning hidden">Discard changes</button></div>
+				<div style="padding: 0px 0px 0px 0px" class="col-md-3"><button id="save"
 						class="btn-footer btn btn-success hidden">Save note</button></div>
 			</div>
 		</div>

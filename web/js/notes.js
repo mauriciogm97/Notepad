@@ -45,6 +45,7 @@ function displayNoteEditable(index) {
   textbody.select();
 
   $('#save').removeClass('hidden');
+  $('#discard').removeClass('hidden');
   $('#info').removeClass('hidden');
 }
 
@@ -87,7 +88,9 @@ function displayNoteMD(index) {
   }
 
   $('#save').addClass('hidden');
+  $('#discard').addClass('hidden');
   $('#info').addClass('hidden');
+  $('#delete').removeClass('hidden');
 }
 
 function mdToPlainText(mdText, callback) {
@@ -185,6 +188,7 @@ function removeNote(index) {
   textBodyMd.removeClass('hidden');
   textBodyEditable.addClass('hidden');
   textBodyMd.unbind();
+  $('#delete').addClass('hidden');
 }
 
 $('#addNote').on('click', function () {
@@ -276,9 +280,8 @@ $('#logout').on('click', function () {
     method: 'GET',
     dataType: 'json',
     success: function (data) {
-      localStorage.remove('token')
-
-      // TODO: Acciones success
+      localStorage.remove('token');
+      window.location = './index.html';
     },
     error: function (error_msg) {
       console.log(error_msg);
