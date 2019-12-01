@@ -421,12 +421,26 @@ input.input100 {
   height: 100%;
 }
 
+#noteContainer {
+  padding: 0px;
+}
+
 .notes {
   padding: 0px;
-  height: 100%;
+  height: 92%;
   background-color: #f2f4f6;
   border-right: 1px solid #c7d8df;
   overflow: auto;
+}
+
+#addNote {
+  border-top: 1px solid black;
+  border-right: 1px solid #c7d8df;
+  height: 8%;
+}
+
+div > span.note-head {
+  height: 100%;
 }
 
 .body {
