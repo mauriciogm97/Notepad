@@ -6,9 +6,10 @@
   [ Validate ]*/
   var input = $('.validate-input .input100');
 
-  $('.validate-form').on('submit', function () {
+  function validateForm() {
     var check = true;
 
+    console.log('VALIDATING');
     for (var i = 0; i < input.length; i++) {
       if (validate(input[i]) == false) {
         showValidate(input[i]);
@@ -16,7 +17,7 @@
       }
     }
     return check;
-  });
+  };
 
 
   $('.validate-form .input100').each(function () {
