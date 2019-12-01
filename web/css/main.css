@@ -476,6 +476,7 @@ div > span.note-head {
 
 .note-head {
   height: 100px;
+  width: 100%;
   padding: 15px 0px 0px 10px;
   text-align: left;
   /* background-color: #fdfdfd; */
