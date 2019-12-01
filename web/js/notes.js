@@ -7,7 +7,7 @@ if (token) {
   token = token.replace(/^"(.*)"$/, '$1'); // Remove quotes from token start/end.
 }
 
-console.log(token)
+var notes = []
 
 function loadNotes() {
   $.ajax({
@@ -19,15 +19,34 @@ function loadNotes() {
     method: 'GET',
     dataType: 'json',
     success: function (data) {
-      // TODO: Acciones success
-      // for (let i = 0; i < data.length; i++) {
-      //
-      // }
-      console.log(data)
+      for (let i = 0; i < data.length; i++) {
+        let note = data[i];
+
+        let note_head = $(document.createElement('div'));
+        note_head.addClass('note-head')
+        note_head.attr('index', notes.length);
+
+        let note_head_name = $(document.createElement('p'));
+        note_head_name.addClass('title');
+        note_head_name.text(note.name);
+
+        let note_head_body = $(document.createElement('p'));
+        note_head_body.addClass('desc');
+        note_head_body.text(note.body);
+
+        note_head.append(note_head_name);
+        note_head.append(note_head_body);
+
+        let hr = $(document.createElement('hr'));
+
+        $('#note-heads').append(note_head);
+        $('#note-heads').append(hr);
+
+        notes.push(note);
+      }
     },
     error: function (error_msg) {
-      // TODO: Acciones error
-      // Nota, es error de servidor, una lista de notas vacias no es un error.
+      console.log(error_msg);
     }
   });
 }

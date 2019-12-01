@@ -68,8 +68,6 @@ $('#login_button').on('click', function (event) {
 
   json_to_send = JSON.stringify(json_to_send);
 
-  console.log(json_to_send)
-
   if (validateForm()) {
     req = $.ajax({
       url: 'https://notepad-finalweb.herokuapp.com/login',
