@@ -9,6 +9,38 @@ if (token) {
 
 var notes = []
 
+function displayNote(index) {
+  console.log(index);
+}
+
+function placeNote(note) {
+  let note_head = $(document.createElement('div'));
+  note_head.addClass('note-head')
+  note_head.attr('index', notes.length);
+
+  let note_head_name = $(document.createElement('p'));
+  note_head_name.addClass('title');
+  note_head_name.text(note.name);
+
+  let note_head_body = $(document.createElement('p'));
+  note_head_body.addClass('desc');
+  note_head_body.text(note.body);
+
+  note_head.append(note_head_name);
+  note_head.append(note_head_body);
+
+  note_head.on('click', () => {
+    displayNote(note_head.attr('index'))
+  });
+
+  let hr = $(document.createElement('hr'));
+
+  $('#note-heads').append(note_head);
+  $('#note-heads').append(hr);
+
+  notes.push(note);
+}
+
 function loadNotes() {
   $.ajax({
     url: 'https://notepad-finalweb.herokuapp.com/getNotes',
@@ -20,29 +52,7 @@ function loadNotes() {
     dataType: 'json',
     success: function (data) {
       for (let i = 0; i < data.length; i++) {
-        let note = data[i];
-
-        let note_head = $(document.createElement('div'));
-        note_head.addClass('note-head')
-        note_head.attr('index', notes.length);
-
-        let note_head_name = $(document.createElement('p'));
-        note_head_name.addClass('title');
-        note_head_name.text(note.name);
-
-        let note_head_body = $(document.createElement('p'));
-        note_head_body.addClass('desc');
-        note_head_body.text(note.body);
-
-        note_head.append(note_head_name);
-        note_head.append(note_head_body);
-
-        let hr = $(document.createElement('hr'));
-
-        $('#note-heads').append(note_head);
-        $('#note-heads').append(hr);
-
-        notes.push(note);
+        placeNote(data[i]);
       }
     },
     error: function (error_msg) {
@@ -52,7 +62,7 @@ function loadNotes() {
 }
 loadNotes()
 
-$('#add_note').on('click', function () {
+$('#addNote').on('click', function () {
   $.ajax({
     url: 'https://notepad-finalweb.herokuapp.com/createNote',
     headers: {
@@ -63,9 +73,10 @@ $('#add_note').on('click', function () {
     dataType: 'json',
     success: function (data) {
       // TODO: Acciones success
+      placeNote(data);
     },
     error: function (error_msg) {
-      // TODO: Acciones error
+      console.log(error_msg);
     }
   });
 })
