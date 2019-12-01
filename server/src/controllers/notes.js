@@ -38,7 +38,9 @@ const updateNote = function (req, res) {
   Note.findOneAndUpdate({
     _id,
     createdBy: req.user._id
-  }, req.body).then(function (note) {
+  }, req.body, {
+    new: true
+  }).then(function (note) {
     if (!note) {
       return res.status(404).send({
         error: `Note with id ${_id} not found.`
