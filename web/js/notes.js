@@ -7,6 +7,8 @@ if (token) {
   token = token.replace(/^"(.*)"$/, '$1'); // Remove quotes from token start/end.
 }
 
+console.log(token)
+
 function loadNotes() {
   $.ajax({
     url: 'https://notepad-finalweb.herokuapp.com/getNotes',
@@ -21,6 +23,7 @@ function loadNotes() {
       // for (let i = 0; i < data.length; i++) {
       //
       // }
+      console.log(data)
     },
     error: function (error_msg) {
       // TODO: Acciones error

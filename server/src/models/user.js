@@ -3,6 +3,8 @@ const mongoose = require('mongoose')
 const bcryptjs = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
+var secret = process.env.TOKEN_SECRET || require('../credentials.js').TOKEN_SECRET
+
 const userSchema = mongoose.Schema({
   name: {
     type: String,
@@ -41,19 +43,19 @@ userSchema.virtual('notes', {
 userSchema.methods.generateToken = function () {
   const user = this
   const token = jwt.sign({
-      _id: user._id.toString()
-    },
-    'superSecret', {
-      expiresIn: '7 days'
-    })
-
+    _id: user._id.toString()
+  }, secret, {
+    expiresIn: '7 days'
+  })
   user.tokens = user.tokens.concat({
     token
   })
-  user.save().then(function (user) {
-    return token
-  }).catch(function (error) {
-    return error
+  return new Promise(function (resolve, reject) {
+    user.save().then(function (user) {
+      return resolve(token)
+    }).catch(function (error) {
+      return reject(error)
+    })
   })
 }
 
