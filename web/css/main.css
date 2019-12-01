@@ -465,7 +465,7 @@ input.input100 {
   height: 8%;
 }
 
-div > span.note-head {
+div>span.note-head {
   height: 100%;
 }
 
@@ -494,7 +494,7 @@ div > span.note-head {
 }
 
 .clicked {
-  background-color: #aaaaaa; 
+  background-color: #aaaaaa;
 }
 
 .clicked p {
@@ -533,6 +533,10 @@ hr {
   resize: none;
   background-color: #fffddf;
   text-overflow: ellipsis;
+}
+
+.note-body>* {
+  margin-bottom: 10px;
 }
 
 .title {
