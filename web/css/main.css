@@ -1,13 +1,9 @@
-
-
-
-
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
 
 @font-face {
   font-family: OpenSans-Regular;
-  src: url('../fonts/OpenSans/OpenSans-Regular.ttf'); 
+  src: url('../fonts/OpenSans/OpenSans-Regular.ttf');
 }
 
 
@@ -16,60 +12,67 @@
 [ RESTYLE TAG ]*/
 
 * {
-	margin: 0px; 
-	padding: 0px; 
-	box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
 }
 
-body, html {
-	height: 100%;
-	font-family: OpenSans-Regular, sans-serif;
+body,
+html {
+  height: 100%;
+  font-family: OpenSans-Regular, sans-serif;
 }
 
 /*---------------------------------------------*/
 a {
-	font-family: OpenSans-Regular;
-	font-size: 14px;
-	line-height: 1.7;
-	color: #666666;
-	margin: 0px;
-	transition: all 0.4s;
-	-webkit-transition: all 0.4s;
+  font-family: OpenSans-Regular;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #666666;
+  margin: 0px;
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
 }
 
 a:focus {
-	outline: none !important;
+  outline: none !important;
 }
 
 a:hover {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 /*---------------------------------------------*/
-h1,h2,h3,h4,h5,h6 {
-	margin: 0px;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0px;
 }
 
 p {
-	font-family: OpenSans-Regular;
-	font-size: 14px;
-	line-height: 1.7;
-	color: #666666;
-	margin: 0px;
+  font-family: OpenSans-Regular;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #666666;
+  margin: 0px;
 }
 
-ul, li {
-	margin: 0px;
-	list-style-type: none;
+ul,
+li {
+  margin: 0px;
+  list-style-type: none;
 }
 
 
 /*---------------------------------------------*/
 input {
-	outline: none;
-	border: none;
+  outline: none;
+  border: none;
 }
 
 textarea {
@@ -77,33 +80,56 @@ textarea {
   border: none;
 }
 
-textarea:focus, input:focus {
+textarea:focus,
+input:focus {
   border-color: transparent !important;
 }
 
-input::-webkit-input-placeholder { color: #666666;}
-input:-moz-placeholder { color: #666666;}
-input::-moz-placeholder { color: #666666;}
-input:-ms-input-placeholder { color: #666666;}
+input::-webkit-input-placeholder {
+  color: #666666;
+}
 
-textarea::-webkit-input-placeholder { color: #666666;}
-textarea:-moz-placeholder { color: #666666;}
-textarea::-moz-placeholder { color: #666666;}
-textarea:-ms-input-placeholder { color: #666666;}
+input:-moz-placeholder {
+  color: #666666;
+}
+
+input::-moz-placeholder {
+  color: #666666;
+}
+
+input:-ms-input-placeholder {
+  color: #666666;
+}
+
+textarea::-webkit-input-placeholder {
+  color: #666666;
+}
+
+textarea:-moz-placeholder {
+  color: #666666;
+}
+
+textarea::-moz-placeholder {
+  color: #666666;
+}
+
+textarea:-ms-input-placeholder {
+  color: #666666;
+}
 
 /*---------------------------------------------*/
 button {
-	outline: none !important;
-	border: none;
-	background: transparent;
+  outline: none !important;
+  border: none;
+  background: transparent;
 }
 
 button:hover {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 iframe {
-	border: none !important;
+  border: none !important;
 }
 
 /*//////////////////////////////////////////////////////////////////
@@ -136,7 +162,7 @@ iframe {
 }
 
 .container-login100 {
-  width: 100%;  
+  width: 100%;
   min-height: 100vh;
   display: -webkit-box;
   display: -webkit-flex;
@@ -214,7 +240,7 @@ input.input100 {
 /*------------------------------------------------------------------
 [ Focus Input ]*/
 
-.focus-input100-1, 
+.focus-input100-1,
 .focus-input100-2 {
   display: block;
   position: absolute;
@@ -265,28 +291,28 @@ input.input100 {
   left: -1px;
 }
 
-.input100:focus + .focus-input100-1::before {
+.input100:focus+.focus-input100-1::before {
   -webkit-animation: full-w 0.2s linear 0s;
   animation: full-w 0.2s linear 0s;
   animation-fill-mode: both;
   -webkit-animation-fill-mode: both;
 }
 
-.input100:focus + .focus-input100-1::after {
+.input100:focus+.focus-input100-1::after {
   -webkit-animation: full-h 0.1s linear 0.2s;
   animation: full-h 0.1s linear 0.2s;
   animation-fill-mode: both;
   -webkit-animation-fill-mode: both;
 }
 
-.input100:focus + .focus-input100-1 + .focus-input100-2::before {
+.input100:focus+.focus-input100-1+.focus-input100-2::before {
   -webkit-animation: full-w 0.2s linear 0.3s;
   animation: full-w 0.2s linear 0.3s;
   animation-fill-mode: both;
   -webkit-animation-fill-mode: both;
 }
 
-.input100:focus + .focus-input100-1 + .focus-input100-2::after {
+.input100:focus+.focus-input100-1+.focus-input100-2::after {
   -webkit-animation: full-h 0.1s linear 0.5s;
   animation: full-h 0.1s linear 0.5s;
   animation-fill-mode: both;
@@ -449,7 +475,6 @@ div > span.note-head {
 }
 
 .note-head {
-  width: 100%;
   height: 100px;
   padding: 15px 0px 0px 10px;
   text-align: left;
@@ -472,6 +497,7 @@ hr {
   padding-left: auto;
   margin: 0;
 }
+
 /* .note-head:after {
   border-bottom: 1px solid #666;
   content: '';
@@ -489,13 +515,14 @@ hr {
   /* background-color: #BEBBBB; */
   padding-top: 20px;
   padding-bottom: 20px;
-}  
+}
 
 .note-body {
   width: 100%;
   height: 100%;
   resize: none;
   background-color: #fffddf;
+  text-overflow: ellipsis;
 }
 
 .title {
