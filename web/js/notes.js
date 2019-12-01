@@ -34,17 +34,13 @@ function displayNoteMD(index) {
 
   if (typeof name != 'undefined') {
     const str = name + '<br>' + body;
-    json_to_send = {
-      "s": str
-    };
-    json_to_send = JSON.stringify(json_to_send);
     $.ajax({
-      url: 'https://helloacm.com/api/markdown/',
+      url: 'https://api.github.com/markdown/raw',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'text/plain',
       },
       method: 'POST',
-      data: json_to_send,
+      data: str,
       success: function (data) {
         display(data)
       },
