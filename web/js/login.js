@@ -80,13 +80,15 @@ $('#login_button').on('click', function (event) {
       dataType: 'json',
       data: json_to_send,
       success: function (data) {
+        console.log(data);
         localStorage.setItem('token', data.token);
         console.log('Success! ', data);
         // TODO: Acciones de success
       },
       error: function (error_msg) {
-        //console.log('Failure ', error_msg);
+        console.log('Failure ', error_msg);
         // TODO: Acciones error
+        $('#error_msg').removeClass('hidden');
       }
     })
 
