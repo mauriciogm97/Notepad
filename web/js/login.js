@@ -81,8 +81,8 @@ $('#login_button').on('click', function (event) {
       data: json_to_send,
       success: function (data) {
         localStorage.setItem('token', data.token);
-        console.log('Success! ', data);
-        // TODO: Acciones de success
+        console.log(data)
+        window.location = './notes.html';
       },
       error: function (error_msg) {
         //console.log('Failure ', error_msg);
