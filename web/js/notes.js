@@ -34,10 +34,17 @@ function displayNoteMD(index) {
 
   if (typeof name != 'undefined') {
     const str = name + '<br>' + body;
-    const req_url = 'https://helloacm.com/api/markdown/?cached&s=' + str;
+    json_to_send = {
+      "s": str
+    };
+    json_to_send = JSON.stringify(json_to_send);
     $.ajax({
-      url: req_url,
-      method: 'GET',
+      url: 'https://helloacm.com/api/markdown/',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+      data: json_to_send,
       success: function (data) {
         display(data)
       },
@@ -56,13 +63,21 @@ function placeNote(note) {
   note_head.addClass('note-head')
   note_head.attr('index', notes.length);
 
+  var note_name = '';
+  if (typeof note.name == 'string') {
+    note_name = note.name.replace(/[^\w\s\n!?]/g, '');
+  }
   let note_head_name = $(document.createElement('p'));
   note_head_name.addClass('title');
-  note_head_name.text(note.name.replace(/[^\w\s!?]/g, ''));
+  note_head_name.text(note_name);
 
+  var note_body = '';
+  if (typeof note.body == 'string') {
+    note_body = note.body.replace(/[^\w\s\n!?]/g, '');
+  }
   let note_head_body = $(document.createElement('p'));
   note_head_body.addClass('desc');
-  note_head_body.text(note.body.replace(/[^\w\s!?]/g, ''));
+  note_head_body.text(note_body);
 
   note_head.append(note_head_name);
   note_head.append(note_head_body);
