@@ -475,14 +475,14 @@ div>span.note-head {
 }
 
 .note-head {
-  height: 100px;
+  height: 80px;
   width: 100%;
   padding: 15px 0px 0px 10px;
   text-align: left;
   /* background-color: #fdfdfd; */
   background-color: #f2f4f6;
   /* border-bottom: 1px solid gray; */
-  display: table;
+  /* display: table; */
 }
 
 .note-head:hover {
@@ -542,6 +542,15 @@ hr {
 .title {
   color: black;
   font-weight: 1000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.desc {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;;
 }
 
 #footer {
