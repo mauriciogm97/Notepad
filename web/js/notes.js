@@ -189,6 +189,9 @@ function removeNote(index) {
   textBodyEditable.addClass('hidden');
   textBodyMd.unbind();
   $('#delete').addClass('hidden');
+  $('#save').addClass('hidden');
+  $('#discard').addClass('hidden');
+  $('#info').addClass('hidden');
 }
 
 $('#addNote').on('click', function () {
