@@ -54,7 +54,7 @@
   /* ========================================================================*/
 
   $('#login').on('click', function () {
-    window.location = './login.html';
+    window.location = './index.html';
   })
 
   $('#signup').on('click', function (event) {
